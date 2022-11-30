@@ -1,30 +1,11 @@
-# Basic AlarmPeople Net6 Services structure
+# Basic AlarmPeople Excel file reader
 
 ## construct this using powershell
 
 ```powershell
-dotnet new classlib -n APService
-dotnet new console  -n APConsole
-dotnet new worker   -n APWinService
-dotnet new xunit    -n APUnitTests
-dotnet new sln      -n APSolution -o .
+dotnet new console  -n excel_reader -o .
 
-dotnet sln add APService\APService.csproj
-dotnet sln add APConsole\APConsole.csproj
-dotnet sln add APWinService\APWinService.csproj
-dotnet sln add APUnitTests\APUnitTests.csproj
-
-pushd APConsole
-dotnet add reference ..\APService\APService.csproj
-popd
-
-pushd APWinService
-dotnet add reference ..\APService\APService.csproj
-popd
-
-pushd APUnitTests
-dotnet add reference ..\APService\APService.csproj
-popd
+dotnet add package NPOI
 
 # check it all works
 dotnet build
